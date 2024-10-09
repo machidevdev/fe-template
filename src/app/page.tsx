@@ -1,8 +1,21 @@
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      {/* Wallet connection button */}
+      <div className="absolute top-4 right-4">
+        <ConnectButton />
+      </div>
+
+      {/* Test element */}
+      <div className="bg-blue-500 text-white p-4 rounded-lg mb-4">
+        This is a Tailwind styled div
+      </div>
+
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
@@ -14,7 +27,7 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Get started by editing{" "}
+            Get started by editing{' '}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               src/app/page.tsx
             </code>
