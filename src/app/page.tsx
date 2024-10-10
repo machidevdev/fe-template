@@ -2,8 +2,11 @@
 
 import Image from 'next/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { trpc } from '@/utils/trpc';
 
 export default function Home() {
+  const { isLoading, data, isError } = trpc.hello.useQuery({ name: 'tRPC' });
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {/* Wallet connection button */}
@@ -14,6 +17,15 @@ export default function Home() {
       {/* Test element */}
       <div className="bg-blue-500 text-white p-4 rounded-lg mb-4">
         This is a Tailwind styled div
+      </div>
+
+      {/* tRPC test */}
+      <div className="bg-green-500 text-white p-4 rounded-lg mb-4">
+        {isLoading
+          ? 'Loading tRPC query...'
+          : isError
+          ? 'Error loading tRPC query'
+          : data}
       </div>
 
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
